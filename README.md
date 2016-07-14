@@ -16,6 +16,8 @@ Telegram bot can retrieve the data about sensor values in the last 24h, send not
 
 git clone https://github.com/djolez/hydroponic.git
 
+Web app: Run bower install in web-app folder
+
 For the Client, the Bot, Part: Simply Search Hydrobot on telegram
 
 
