@@ -1,0 +1,39 @@
+.highcharts-container{
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.sortable-placeholder{
+	background-color: grey;
+	height: 100%;
+	width: 100%;
+}
+
+.no-horizontal-padd{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.table-small-padding > tbody > tr > td{
+	padding: 2px;
+}
+
+.table-small-padding > thead > tr > th{
+	padding: 2px;
+}
+
+.bg-color-red{
+	background-color: lightcoral !important;
+}
+
+.bg-color-green{
+	background-color: lightgreen !important;
+}
+
+.bg-color-yellow{
+	background-color: lightyellow !important;
+}
+
+.bg-color-blue{
+	background-color: lightblue !important;
+}

@@ -1,0 +1,108 @@
+﻿<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header" style="margin-top: 0; margin-bottom: 10px;">Configuration
+				<button style="margin-top: 7px;" title="Save changes" ng-click="saveConfig(config);" class="pull-right btn btn-danger">
+						<i class="fa fa-save" style="margin-right: 10px;"></i>Save changes</button>	
+		</h1>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-lg-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> Devices
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body form-group">
+				<div ng-repeat="device in config.devices">
+					<h4 style="margin-top: 0;" class="text-center">{{device.name}}</h4>
+
+					<div class="row" ng-repeat="interval in device.intervals" ng-init="hover=false;" ng-mouseover="hover=true;" ng-mouseleave="hover=false;">
+						<div class="col-lg-5">
+							<label ng-if="$first">ON</label>
+							<input class="form-control" ng-model="interval.on" />
+						</div>
+
+						<div class="col-lg-5">
+							<label ng-if="$first">OFF</label>
+							<input class="form-control" ng-model="interval.off" />
+						</div>
+
+						<div class="col-md-2" ng-style="$first ? {'padding-top': '30px'} : {'padding-top': '8px'}">
+							<i ng-show="hover;" style="cursor: pointer; color: red;" class="fa fa-remove" ng-click="device.intervals.splice($index, 1);"></i>
+						</div>
+					</div>
+					
+					<div class="text-center" style="padding-top: 10px;">
+						<a href="" ng-click="device.intervals.push({on: '', off: ''})">Add new interval</a>
+					</div>
+
+					<hr ng-if="!$last" />
+				</div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+		
+	</div>
+
+	
+	<div class="col-lg-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> Sensors
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+					<div class="row">
+						<div class="form-group col-lg-6">
+							<label>Update interval (in seconds)</label>
+							<input class="form-control" ng-model="config.sensors.updateInterval" />
+						</div>
+					
+						<div class="form-group col-lg-6">
+							<label>Monitor interval (in minutes)</label>
+							<input class="form-control" ng-model="config.sensors.checkValuesInterval" />
+						</div>
+					</div>
+
+					<hr />
+
+					<div class="row" ng-repeat="sensor in config.sensors.list" ng-init="hover=false;" ng-mouseover="hover=true;" ng-mouseleave="hover=false;">
+							<h4 ng-show="!sensor.edit"style="margin-top: 0;" class="text-center">{{sensor.name}} <i ng-show="hover;" class="fa fa-edit" style="font-size: 15px; margin-left: 10px; color: orange; cursor: pointer;" ng-click="sensor.edit = true;"></i> <i ng-show="hover;" style="cursor: pointer; color: red; margin-left: 10px" class="fa fa-remove" ng-click="config.sensors.list.splice($index, 1);"></i></h4>
+						
+						<div ng-show="sensor.edit" class="col-lg-6 col-lg-offset-3 text-center">
+							<div class="col-lg-10">	
+								<input class="form-control" ng-model="sensor.name" />
+							</div>
+							<div class="col-lg-2" style="padding-top: 6px;">
+									<i class="fa fa-check" style="font-size: 15px; color: green; cursor: pointer; margin-left: -20px;" ng-show="sensor.name.length > 0;" ng-click="sensor.edit = false;"></i>
+							</div>
+						</div>
+
+						<div class="form-group col-lg-6">
+							<label>Min value</label>
+							<input class="form-control" ng-model="sensor.desiredValue.min"/>
+						</div>
+
+						<div class="form-group col-lg-6">
+							<label>Max value</label>
+							<input class="form-control" ng-model="sensor.desiredValue.max"/>
+						</div>
+
+					</div>
+					
+					<div class="text-center" style="padding-top: 10px;">
+							<a href="" ng-click="config.sensors.list.push({desiredValue: {min: '', max: ''}, edit: true, name: ''})">Add new sensor value range</a>
+					</div>
+	
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+		
+	</div>
+
+</div>

@@ -1,0 +1,1 @@
+{"sensors": {"checkValuesInterval": 60, "list": [{"desiredValue": {"max": 26, "min": 18}, "name": "waterTemp"}, {"edit": false, "desiredValue": {"max": 60, "min": 33}, "name": "DHT_humidity"}], "updateInterval": 60}, "devices": [{"intervals": [{"on": "07:00", "off": "00:30"}], "name": "light"}, {"intervals": [{"on": "08:40", "off": "08:55"}], "name": "water_pump"}]}

@@ -1,0 +1,256 @@
+﻿<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header" style="margin-top: 0; margin-bottom: 10px;">
+			Dashboard
+		
+			<button class="btn btn-sm btn-warning" ng-click="refresh();"><i class="fa fa-refresh"></i></button>
+			<button class="btn btn-sm btn-success" ng-click="takePicture();"><i class="fa fa-camera" ng-class="loaders.takePicture ? 'fa-spin' : ''"></i></button>
+			<a href="" ng-click="showCameraSettings=!showCameraSettings;" target="_blank" style="font-size: 16px; margin-right: 10px;">Camera settings</a>	
+
+			<a href="/img" target="_blank" style="font-size: 16px;">View images</a>	
+
+			<a href="" style="font-size: 16px;" ng-click="showTimelapseSettings=!showTimelapseSettings;">View timelapse</a>
+		</h1>
+	</div>
+
+	<div class="col-md-12" ng-show="showCameraSettings">
+		<input ng-model="camera.width" placeholder="Camera width" class="form control" />
+		<input ng-model="camera.height" placeholder="Camera height" class="form control" />
+	</div>
+
+	<div class="col-md-12" style="margin-bottom: 10px;" ng-show="showTimelapseSettings">
+		<datetimepicker
+			ng-model="timelapse.start"
+			date-format="dd-MM-yyyy"
+			show-meridian="config.datePicker.showMeridian">	
+		</datetimepicker>
+		
+		<datetimepicker
+			ng-model="timelapse.end"
+			date-format="dd-MM-yyyy"
+			show-meridian="config.datePicker.showMeridian"
+			style="margin-left: 40px;">	
+		</datetimepicker>
+
+		<button class="btn btn-sm btn-primary" style="margin-left: 20px;" ng-click="openTimelapse(timelapse.start, timelapse.end);">Open</button>
+	</div>
+
+</div>
+
+<div class="row" ng-init="initializeData();">
+	
+	<div class="col-md-12 text-center" ng-show="loaders.getNotifications">	
+		<i class="fa fa-spinner fa-spin"></i>
+	</div>
+
+	<div class="col-lg-3 col-md-6" ng-repeat="notif in notifications" ng-show="!notif.hide && !loaders.getNotifications">
+		<div class="panel panel-yellow">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="fa fa-exclamation fa-5x"></i>
+					</div>
+					<div class="col-xs-9 text-right">
+							<div class="huge" ng-show="notif.value">
+								{{notif.value}}
+							</div>
+							
+							<div>
+								<p>{{notif.entity}} - {{notif.name}}</p>
+								<p>{{notif.message}}</p>
+							</div>
+					</div>
+				</div>
+			</div>
+			<a href="#">
+				<div class="panel-footer" ng-click="notif.hide = true;">
+					<span class="pull-left">Dismiss</span>
+					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+
+	<div class="col-lg-8">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> Sensor charts
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body form-group">
+				<div class="row">
+					<form>				
+						<div class="col-lg-12">
+							<div isteven-multi-select
+								input-model="availableSensors"
+								output-model="output"
+								button-label="name"
+								item-label="name"
+								tick-property="selected"
+								style="margin-bottom: 10px;">
+							</div>
+						</div>		
+						
+						<div class="col-md-12">
+							<div class="col-md-5 form-group no-horizontal-padd">
+								<!--<label>Start</label>-->
+
+								<datetimepicker
+									ng-model="dates.startDate"
+									date-format="dd-MM-yyyy"
+									show-meridian="config.datePicker.showMeridian">	
+								</datetimepicker>
+							</div>
+
+							<div class="col-md-5 form-group no-horizontal-padd">
+								<!--<label>End</label>-->
+
+								<datetimepicker ng-model="dates.endDate"
+									date-format="dd-MM-yyyy"
+									show-meridian="config.datePicker.showMeridian">	
+								</datetimepicker>
+							</div>
+
+							<div class="col-md-2 form-group no-horizontal-padd">
+								<button class="btn btn-primary btn-sm" ng-click="getSensorData(dates.startDate, dates.endDate)">Go!</button>
+							</div>
+						</div>
+						
+						<div ng-init="split=false;" ng-dblclick="split=!split; redrawCharts();" class="row" ui-sortable="sortableOptions" ng-model="selectedSensors">
+							<div class="col-md-12 text-center" ng-show="loaders.getSensorData">	
+								<i class="fa fa-spinner fa-spin"></i>
+							</div>
+
+							<div class="col-lg-{{split ? '6' : '12'}}" ng-repeat="sensorData in selectedSensors | orderBy: 'name'">
+							<highchart id="chart-{{$index}}" config="sensorData.config"></highcharts>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+
+	<div class="col-lg-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> Devices (click to switch on/off)
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body form-group" style="padding-bottom: 0; min-height: 30px; margin-bottom: 0;">
+				
+				<div class="col-md-12 text-center" ng-show="loaders.getDevices">	
+					<i class="fa fa-spinner fa-spin"></i>
+				</div>
+
+				<div class="col-lg-6 col-sm-6 text-center" ng-show="!loaders.getDevices" ng-repeat="device in devices">	
+					<h5 style="margin-top: 0; margin-bottom: 0; cursor: pointer;" ng-click="sendCommandToDevice(device)">
+						<i class="fa fa-{{device.icon}} fa-2x"
+							style="margin-right: 10px; min-width: 90px;"
+							ng-style="device.state === 'on' && {'color': 'orange'}"></i>
+						<p>{{device.name}}</p>
+					</h5>
+				</div>
+				
+				<hr ng-show="loaders.getLastDeviceActions" />
+
+				<div class="row">
+					<div class="col-md-12 text-center" ng-show="loaders.getLastDeviceActions">	
+						<i class="fa fa-spinner fa-spin"></i>
+					</div>
+
+					<div class="table-responsive col-md-12 no-horizontal-padd" ng-show="!loaders.getLastDeviceActions && deviceActions.length > 0;" style="max-height: 282px; overflow-y: scroll;">
+						<table class="table table-small-padding table-striped table-bordered table-hover" style="margin-bottom: 0;">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Time</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+									<tr ng-repeat="action in deviceActions" ng-class="{'bg-color-yellow': action.name === 'light', 'bg-color-blue': action.name === 'water_pump'}">
+									<td>{{action.name}}</td>
+									<td>{{moment(action.timestamp).format('HH:mm')}}</td>
+									<td ng-class="(action.state == 'on') ? 'bg-color-green' : 'bg-color-red'">{{action.state}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-bar-chart-o fa-fw"></i> Sensor values in last 24h
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body form-group" style="padding: 0; margin-bottom: 0; min-height: 30px;">
+				<div class="col-md-12 text-center" ng-show="loaders.getSensorStats">	
+					<i class="fa fa-spinner fa-spin"></i>
+				</div>
+
+				<div class="table-responsive" ng-show="!loaders.getSensorStats && sensorStats.length > 0;">
+					<table class="table table-small-padding table-striped table-bordered table-hover" style="margin-bottom: 0;">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Current</th>
+								<th>Min</th>
+								<th>Max</th>
+								<th>Avg</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="sensor in sensorStats">
+								<td>{{sensor.name}}</td>
+								<td>{{sensor.last}}</td>
+								<td>{{sensor.min}}</td>
+								<td>{{sensor.max}}</td>
+								<td>{{sensor.avg}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+
+		<!-- /.panel -->	
+	</div>
+
+</div>
+
+<script type="text/ng-template" id="deviceModal.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Set run time</h3>
+	</div>
+	<div class="modal-body">
+		<form ng-submit="ok()">
+			<label>Time in minutes</label>
+		
+			<input class="form-control" ng-model="selectedDevice.runTime" type="number"/>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</div>
+</script>
+
+
+
+
+
+
+
+

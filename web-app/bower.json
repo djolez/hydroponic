@@ -1,0 +1,32 @@
+{
+  "name": "html",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "datetimepicker": "^2.5.3",
+    "highcharts": "highcharts.com#^4.2.5",
+    "moment": "^2.13.0",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.5",
+    "angular-ui-router": "^0.3.0",
+    "angular-bootstrap": "^1.3.2",
+    "highcharts-ng": "^0.0.11",
+    "angular-material": "^1.0.9",
+    "isteven-angular-multiselect": "angular-multi-select#^4.0.0",
+    "metisMenu": "~1.1.3",
+    "font-awesome": "~4.2.0",
+    "angular-ui-sortable": "^0.14.2",
+    "ngstorage": "^0.3.10",
+    "angular-growl-v2": "^0.7.9"
+  }
+}
