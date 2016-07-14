@@ -1,23 +1,22 @@
-# hydroponic
-Hydroponics is a kind of hydroculture, which is the growing of plants in a soil less medium, or an aquatic based environment. 
-Hydroponic growing uses mineral nutrient solutions to feed the plants in water and everything without soil.
+# Hydroponic
 
+In this implementation Ebb and Flow system is used. This system works by temporarily flooding the grow tray with nutrient solution and then draining the solution back into the reservoir. When the scheduler turns the pump on nutrient solution is pumped into the grow tray. When the timer shuts the pump off the nutrient solution flows back into the reservoir. The water pump is set to come on several times a day, depending on the size and type of plants, temperature and humidity and the type of growing medium used.
 
-# How it is Work
-The system controller is builded with a Raspberry Pi as a server. 
-The Pi communicate with an Arduino that with some sensors, take trace of the condition of the plants and the system, then the user can control the devices functionlity. The user can see the condition of the plants, the status of the devices and the values of the sensors using a Telegram bot and a Web App. 
-The last one also provides to control the devices (switch on and off them)
+# How it works
 
-# How to install Server
+Rasbperry Pi works as a server that collects sensor data from Arduino over USB serial communication and keeps it in SQLite database. It is equipped with Pi camera, used for visual inspection of plants progress, also it has the functionality of capturing timelapse photos.
 
-For the Server Part:
+Web app is used for displaying the sensor data in form of the charts and working time for devices (light and water pump), providing user with configuration page where he can set on/off intervals of the devices and desired values of the sensors, also it displays notifications. From here user can take pictures manually or open the timelapse view for specified date range.
+
+Telegram bot is used for retrieving the data about sensor values in the last 24h, sending notifications about values out of range for sensors (specified in the config part of web app) and capturing pictures.
+
+# Setting up
 
 git clone https://github.com/djolez/hydroponic.git
-
-in the projet the user can be find everithing he can use to setup the system. 
 
 For the Client, the Bot, Part: Simply Search Hydrobot on telegram
 
 
-# you can find pictures of the system you can watch some picture on:
+# Pictures of the system development
+
 Project pictures: http://imgur.com/a/kVj2a
