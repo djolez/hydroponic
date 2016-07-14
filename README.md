@@ -6,3 +6,5 @@ The Pi communicate with an Arduino that with some sensors, take trace of the con
 and can control the devices functionlity. The user can see the condition of the plants, the status of the devices
 and the values of the sensors using a Telegram bot and a Web App. 
 The last one also provides to control the devices (switch on and off them)
+
+Project pictures: http://imgur.com/a/kVj2a
