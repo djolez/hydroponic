@@ -1,0 +1,1 @@
+{"sensors": {"updateInterval": 30, "list": [{"desiredValue": {"max": 25, "min": 19}, "name": "temp"}]}, "devices": [{"intervals": [{"on": "11:26", "off": "11:26:15"}], "name": "light"}, {"intervals": [{"on": "11:26:20", "off": "11:26:30"}], "name": "pump"}]}
