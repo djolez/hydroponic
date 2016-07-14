@@ -58,8 +58,9 @@ def add_id(u_id):
     u_id.save()
     db_proxy.close()
 
+TBOT_TOKEN = 'PUT TELEGRAM BOT TOKEN HERE'
 
-bot = telepot.Bot('227382160:AAEPpnztMhYbaYDYycjcjeZDr5kL27xdliI')
+bot = telepot.Bot(TBOT_TOKEN)
 init_db()
 dm.init_db()
 
@@ -106,7 +107,7 @@ def handle(msg):
         for user in usrlist:
             print user.user_id
             response = requests.post(
-            url='https://api.telegram.org/bot227382160:AAEPpnztMhYbaYDYycjcjeZDr5kL27xdliI/sendMessage', data={'chat_id': user.user_id, 'text': str(text)}).json()
+            url='https://api.telegram.org/bot' + TBOT_TOKEN+ '/sendMessage', data={'chat_id': user.user_id, 'text': str(text)}).json()
         bot.sendMessage(user.user_id, str(response['ok']))
 
     #elif command == '/citeoftheday':

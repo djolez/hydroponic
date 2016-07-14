@@ -21,6 +21,8 @@ app.config.update({'DEBUG': True, 'JSONIFY_PRETTYPRINT_REGULAR': False})
 
 db_model.init_db()
 
+TBOT_TOKEN = 'PUT TELEGRAM BOT TOKEN HERE'
+
 
 #################
 #               #
@@ -68,7 +70,7 @@ def get_sensors_last_values():
 def send_notif_to(user_chat_id, text):
     # send a notification to a specific user
     response = requests.post(
-        url='https://api.telegram.org/bot227382160:AAEPpnztMhYbaYDYycjcjeZDr5kL27xdliI/sendMessage',
+        url='https://api.telegram.org/bot' + TBOT_TOKEN + '/sendMessage',
         data={'chat_id': user_chat_id, 'text': str(text)}
     ).json()
     return response
@@ -83,7 +85,7 @@ def send_notif_broadcast(text):
     for user in usrlist:
         # print user.user_id
         response = requests.post(
-            url='https://api.telegram.org/bot227382160:AAEPpnztMhYbaYDYycjcjeZDr5kL27xdliI/sendMessage',
+            url='https://api.telegram.org/bot' + TBOT_TOKEN + '/sendMessage',
             data={'chat_id': user.user_id, 'text': str(text)}
         ).json()
 
