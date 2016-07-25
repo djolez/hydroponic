@@ -14,11 +14,15 @@ Tips for growing in hydroponics: http://bit.ly/2a5jRJd
 
 ## Software
 
-Rasbperry Pi works as a server that collects sensor data from Arduino over USB serial communication and keeps it in SQLite database. It is equipped with Pi camera, used for visual inspection of plants progress, also it has the functionality of capturing timelapse photos.
+Raspberry Pi works as a server that collects sensor data from Arduino over USB serial communication and keeps it in a SQLite database. It is equipped with Pi camera, used for visual inspection of plants progress and capturing timelapse photos. Backend is written in Python, running Flask and using NGINX as a web server.
 
-Web app is used for displaying the sensor data in form of the charts and working time for devices (light and water pump), providing user with configuration page where he can set on/off intervals of the devices and desired values of the sensors, also it displays notifications. From here user can take pictures manually or open the timelapse view for specified date range.
+Web app is used for displaying the sensor data in the form of charts and working time for devices (light and water pump), providing user with configuration page where he can set on/off intervals of the devices and desired values of the sensors (used for notifying when they are out of range). From here user can take pictures manually or open the timelapse view for specified date range. Frontend is done in Angular.
 
 Telegram bot can retrieve the data about sensor values in the last 24h, send notifications about values out of range for sensors (specified in the config part of web app) and capture pictures.
+
+###Useful links:
+
+Setting up Telegram bot in Python: http://bit.ly/2af284B
 
 ## Setting up
 
