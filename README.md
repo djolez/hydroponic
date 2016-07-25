@@ -22,7 +22,7 @@ Telegram bot can retrieve the data about sensor values in the last 24h, send not
 
 ###Useful links:
 
-Setting up Telegram bot in Python: http://bit.ly/2af284B
+Running Telegram bot in Python: http://bit.ly/2af284B
 
 ## Setting up
 
