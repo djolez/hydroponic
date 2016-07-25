@@ -18,6 +18,8 @@ Raspberry Pi works as a server that collects sensor data from Arduino over USB s
 
 Web app is used for displaying the sensor data in the form of charts and working time for devices (light and water pump), providing user with configuration page where he can set on/off intervals of the devices and desired values of the sensors (used for notifying when they are out of range). From here user can take pictures manually or open the timelapse view for specified date range. Frontend is done in Angular.
 
+![alt tag](http://imgur.com/KRuebK3)
+
 Telegram bot can retrieve the data about sensor values in the last 24h, send notifications about values out of range for sensors (specified in the config part of web app) and capture pictures.
 
 ###Useful links:
