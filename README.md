@@ -6,7 +6,17 @@ In this implementation Ebb and Flow system is used. This system works by tempora
 
 ![alt tag](http://gardenious.com/wp-content/uploads/2014/08/how-to-build-an-ebb-and-flow-hydroponic-system.png)
 
-###Useful links: 
+### Components used
+
+* Arduino Uno
+* Arduino relay
+* DHT11 Temperature and humidity sensor
+* DS18B20 Water temperature sensor
+* Photocell light sensor
+* Raspberry Pi 3
+* Pi camera v2.1
+
+### Useful links
 
 System build: http://bit.ly/2alQpj7
 
