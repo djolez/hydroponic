@@ -4,13 +4,16 @@
 
 In this implementation Ebb and Flow system is used. This system works by temporarily flooding the grow tray with nutrient solution and then draining the solution back into the reservoir. When the scheduler turns the pump on nutrient solution is pumped into the grow tray. When the timer shuts the pump off the nutrient solution flows back into the reservoir. The water pump is set to come on several times a day, depending on the size and type of plants, temperature and humidity and the type of growing medium used.
 
+![alt tag](http://gardenious.com/wp-content/uploads/2014/08/how-to-build-an-ebb-and-flow-hydroponic-system.png)
+
 ###Useful links: 
 
 System build: http://bit.ly/2alQpj7
 
 Tips for growing in hydroponics: http://bit.ly/2a5jRJd
 
-![alt tag](http://gardenious.com/wp-content/uploads/2014/08/how-to-build-an-ebb-and-flow-hydroponic-system.png)
+Pictures of system development: http://imgur.com/a/kVj2a
+
 
 ## Software
 
@@ -37,6 +40,3 @@ Web app: Run bower install in web-app folder
 For the Client, the Bot, Part: Simply Search Hydrobot on telegram
 
 
-## Pictures of the system development
-
-Project pictures: http://imgur.com/a/kVj2a
