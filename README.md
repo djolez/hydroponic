@@ -1,4 +1,4 @@
-# Hydroponic
+#Hydroponic
 
 ##Hardware
 
@@ -37,6 +37,14 @@ git clone https://github.com/djolez/hydroponic.git
 
 Web app: Run bower install in web-app folder
 
-For the Client, the Bot, Part: Simply Search Hydrobot on telegram
+Telegram bot: Add Hydrobot on Telegram
 
+## Additional info
 
+This project was developed for the course of "Pervasive Systems 2016", held by Prof. Ioannis Chatzigiannakis within the Master of Science in Computer Science of University of Rome "La Sapienza".
+
+Homepage of Pervasive Systems 2016 course : http://ichatz.me/index.php/Site/PervasiveSystems2016
+
+Homepage of Prof. Ioannis Chatzigiannakis: http://ichatz.me/index.php
+
+Homepage of MSECS "La Sapienza": http://cclii.dis.uniroma1.it/?q=msecs
