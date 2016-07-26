@@ -49,6 +49,14 @@ Web app: Run bower install in web-app folder
 
 Telegram bot: Add Hydrobot on Telegram
 
+## Future upgrades
+
+* Build case for Arduino and sensors, make light holder with adjustable height, make holder for Raspberry and camera
+* Enclose the system in a box so the environment conditions can be kept at the desired values more easily
+* Add wifi/ethernet shield to Arduino in order to use MQTT protocol thus removing the need for serial communication with Raspberry
+* (Optimistic) Fully automated nutrient and pH regulation using pH and electrical conductivity sensors in combination with peristaltic pumps
+* (Optimistic) Fully automated drain/refill of the nutrient solution
+
 ## Additional info
 
 This project was developed for the course of "Pervasive Systems 2016", held by Prof. Ioannis Chatzigiannakis within the Master of Science in Computer Science of University of Rome "La Sapienza".
