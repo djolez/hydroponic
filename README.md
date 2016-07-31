@@ -47,6 +47,14 @@ https://www.youtube.com/watch?v=Uy2Df0rXX6M
 ### Telegram bot demo
 https://www.youtube.com/watch?v=GUoj2lxdjzk
 
+## Technologies used
+
+* AngularJS - JavaScript web application framework https://angularjs.org/
+* Flask - Python web framework http://flask.pocoo.org/
+* NGINX - Web server https://www.nginx.com/
+* SQLite - RDBMS https://www.sqlite.org/
+* PlatformIO - Cross-platform build system and library manager for Arduino http://platformio.org/
+
 ## Setting up
 
 git clone https://github.com/djolez/hydroponic.git
@@ -54,6 +62,8 @@ git clone https://github.com/djolez/hydroponic.git
 Web app: Run bower install in web-app folder
 
 Telegram bot: Add Hydrobot on Telegram
+
+NGINX installation instructions: http://nginx.org/en/docs/beginners_guide.html
 
 ## Future upgrades
 
