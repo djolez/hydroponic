@@ -41,6 +41,12 @@ Telegram bot can retrieve the data about sensor values in the last 24h, send not
 
 Running Telegram bot in Python: http://bit.ly/2af284B
 
+### System walkaround
+https://www.youtube.com/watch?v=Uy2Df0rXX6M
+
+### Telegram bot demo
+https://www.youtube.com/watch?v=GUoj2lxdjzk
+
 ## Setting up
 
 git clone https://github.com/djolez/hydroponic.git
