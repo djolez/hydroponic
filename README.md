@@ -54,6 +54,8 @@ https://www.youtube.com/watch?v=GUoj2lxdjzk
 * NGINX - Web server https://www.nginx.com/
 * SQLite - RDBMS https://www.sqlite.org/
 * PlatformIO - Cross-platform build system and library manager for Arduino http://platformio.org/
+* Telepot - Python framework for Telegram Bot API https://github.com/nickoala/telepot
+
 
 ## Setting up
 
