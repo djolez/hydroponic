@@ -49,12 +49,12 @@ https://www.youtube.com/watch?v=GUoj2lxdjzk
 
 ## Technologies used
 
-* AngularJS - JavaScript web application framework https://angularjs.org/
-* Flask - Python web framework http://flask.pocoo.org/
-* NGINX - Web server https://www.nginx.com/
-* SQLite - RDBMS https://www.sqlite.org/
-* PlatformIO - Cross-platform build system and library manager for Arduino http://platformio.org/
-* Telepot - Python framework for Telegram Bot API https://github.com/nickoala/telepot
+* **AngularJS** - JavaScript web application framework https://angularjs.org/
+* **Flask** - Python web framework http://flask.pocoo.org/
+* **NGINX** - Web server https://www.nginx.com/
+* **SQLite** - RDBMS https://www.sqlite.org/
+* **PlatformIO** - Cross-platform build system and library manager for Arduino http://platformio.org/
+* **Telepot** - Python framework for Telegram Bot API https://github.com/nickoala/telepot
 
 
 ## Setting up
