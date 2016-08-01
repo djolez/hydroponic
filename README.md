@@ -17,7 +17,7 @@ In this implementation Ebb and Flow system is used. This system works by tempora
 * Pi camera v2.1 
 
 ### Overall Architecture
-![alt tag](http://imgur.com/oAXko74)
+![alt tag](h[img]http://i.imgur.com/oAXko74.png[/img])
 
 In that system the Raspberry Pi has the role of the server and there we have all the software running.
 The Pi send a request to the Arduino (1) to read the status of all sensors builded with it (temperature, humidity, etc.); the Arduino read the values (2,3) and send them to the Pi (4); all the data are organized and stored in an embedded database (5) that contains all the values previously readed, the log of the status of the sensors, and the users connected to the system; with the telegram bot is possible to request some information (7) (i.e. status of the system, picture of the plants, etc.), the raspberry process the request to access to the desired data in the database(8,9) and then return it to the user that make the request (10); With the web app is possible to have the same functinalities of the telegram bot, but it also give the possibility to set some parameters in the system(i.e. the minimum and maximum values for a normal status of the plants and something more, if this bound is violated a notification is sent to the users through the Telegram bot to warn him), a detailed graphs of the relevation of the sensors and the possibility to switch on/off the devices.
