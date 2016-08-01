@@ -19,8 +19,13 @@ In this implementation Ebb and Flow system is used. This system works by tempora
 ### Overall Architecture
 ![alt tag](http://i.imgur.com/oAXko74.png)
 
-In that system the Raspberry Pi has the role of the server and there we have all the software running.
-The Pi send a request to the Arduino (1) to read the status of all sensors built on it (temperature, humidity, etc.); the Arduino read the values (2,3) and send them to the Pi (4); all the data are organized and stored in an embedded database (5) that contains all the values previously readed of all the sensors, the log of the status of the devices, and the users connected to the system; with the telegram bot is possible to request some information (7) (i.e. status of the system, a snap-shot of the plants, etc.), the raspberry process the request to access to the desired data in the database(8,9) and then return it to the user that make the request (10); With the web app is possible to have the same functinalities of the telegram bot, but it also give the possibility to set some parameters in the system(i.e. the minimum and maximum values for a normal condition of the plants, if this bound is violated a notification is sent to the users through the Telegram bot to warn him), a detailed graphs of the relevations of the sensors and the possibility to switch on/off the devices.
+Raspberry Pi has the role of the server that controls the Arduino, stores sensor values and hosts a web app.
+Pi sends a request at user defined interval to the Arduino (1) to read the data of all the sensors (temperature, humidity, etc.). Arduino reads the values (2,3) and sends them to the Pi over USB connection (4). Those values are stored in a SQLite database (5) that besides sensor readings contains also the log of the devices (light and water pump), users and notifications. User can interact with the system either using web app or telegram bot. Web app (7, 10) is used for displaying sensor data in the form of charts and working time for devices, providing user with configuration page where he can set on/off intervals of the devices and desired values of the sensors (used for notifying when they are out of range). From here user can take pictures manually or open the timelapse view for specified date range. Telegram bot (7, 10) can retrieve the data about sensor values in the last 24h, send notifications about values out of range for sensors (specified in the config part of web app) and capture pictures. 
+
+### Web app interface
+
+![alt tag](http://i.imgur.com/KRuebK3.png)
+![alt tag](http://i.imgur.com/HaghVIf.png)
 
 ### Useful links
 
@@ -29,19 +34,6 @@ System build: http://bit.ly/2alQpj7
 Tips for growing in hydroponics: http://bit.ly/2a5jRJd
 
 Pictures of system development: http://imgur.com/a/kVj2a
-
-
-## Software
-
-Raspberry Pi works as a server that collects sensor data from Arduino over USB serial communication and keeps it in a SQLite database. It is equipped with Pi camera, used for visual inspection of plants progress and capturing timelapse photos. Backend is written in Python, running Flask and using NGINX as a web server.
-
-Web app is used for displaying the sensor data in the form of charts and working time for devices (light and water pump), providing user with configuration page where he can set on/off intervals of the devices and desired values of the sensors (used for notifying when they are out of range). From here user can take pictures manually or open the timelapse view for specified date range. Frontend is done in Angular.
-
-![alt tag](http://i.imgur.com/KRuebK3.png)
-![alt tag](http://i.imgur.com/HaghVIf.png)
-
-
-Telegram bot can retrieve the data about sensor values in the last 24h, send notifications about values out of range for sensors (specified in the config part of web app) and capture pictures.
 
 ###Useful links:
 
